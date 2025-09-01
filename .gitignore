@@ -1,4 +1,5 @@
 # Python
+KIT
 *.egg-info/
 __pycache__/
 *.pyc

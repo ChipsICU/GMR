@@ -97,7 +97,10 @@ class GeneralMotionRetargeting:
 
         self.ik_limits = [mink.ConfigurationLimit(self.model)]
         if use_velocity_limit:
-            VELOCITY_LIMITS = {k: 3*np.pi for k in self.robot_motor_names.keys()}
+            if tgt_robot == "galaxea_r1pro":
+                VELOCITY_LIMITS = {k: 3 * np.pi for k in self.robot_dof_names.keys()}
+            else:
+                VELOCITY_LIMITS = {k: 3 * np.pi for k in self.robot_motor_names.keys()}
             self.ik_limits.append(mink.VelocityLimit(self.model, VELOCITY_LIMITS)) 
             
         self.setup_retarget_configuration()
